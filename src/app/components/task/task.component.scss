@@ -1,0 +1,73 @@
+:host {
+
+    .taskForm {
+        border: unset;
+        box-shadow: 1px 1px 13px 13px rgba(0, 0, 0, 0.1);
+        direction: rtl;
+        margin: auto;
+        padding: 15px !important;
+        background-color: white;
+        opacity: unset;
+        margin-top: 13vh;
+    }
+
+    .modal-fullscreen {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .modal-content {
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .modal {
+        opacity: unset !important;
+        display: block;
+        background-color: rgba(226, 226, 226, 0.8);
+    }
+
+    h5 {
+        text-align: center;
+        color: #353562;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .btn {
+        width: 100%;
+        background-color: #353562;
+        border: unset;
+        margin: 10px
+    }
+
+    .modal-lg,
+    .modal-xl {
+        --bs-modal-width: 400px;
+        height: 100vh;
+    }
+
+    .mb-3 {
+        margin-bottom: 0.2rem !important;
+    }
+
+    .form-label {
+        font-size: 14px;
+    }
+
+    .btns {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .cncl {
+        background-color: white;
+        color: #353562;
+        border: spx solid #353562
+    }
+}

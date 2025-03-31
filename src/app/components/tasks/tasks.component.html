@@ -1,0 +1,52 @@
+@if (tasks) {
+  <h1>מערכת לניהול משימות</h1>
+  <div class="container mt-5">
+    <button (click)="toggleModal()" class="addTask">+</button>
+    <!-- Button to open modal -->
+    <h2>רשימת משימות</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>מספר</th>
+          <th>כותרת</th>
+          <th>תאור</th>
+          <th>עדיפות</th>
+          <th>תאריך יעד</th>
+          <th>סטטוס</th>
+          <th>פעולות</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through tasks and display them -->
+        @for (task of tasks; track task; let index = $index) {
+          <tr>
+            <td>{{ index + 1 }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ priorityOptions[task.priority - 1]?.name }}</td>
+            <td>{{ task.deadLine | date: "yyyy-MM-dd" }}</td>
+            <td>{{ statusOptions[task.status - 1]?.name }}</td>
+            <td class="td">
+              <i
+                class="bi bi-pencil"
+                alt="edit"
+                (click)="toggleModal(task)"
+              ></i>
+              <i
+                class="bi bi-trash"
+                alt="delete"
+                (click)="deleteTask(index)"
+              ></i>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    @if (popupEnable) {
+      <app-task
+        [taskToEdit]="selectedTask"
+        (closePopup)="toggleModal()"
+      ></app-task>
+    }
+  </div>
+}

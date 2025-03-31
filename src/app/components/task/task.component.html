@@ -1,0 +1,74 @@
+<!-- PopUp -->
+<div
+  class="modal fade"
+  id="taskModal"
+  tabindex="-1"
+  aria-labelledby="taskModalLabel"
+  aria-hidden="false"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content taskForm">
+      <div class="modal-body">
+        <h5>הוספת משימה</h5>
+        <form (ngSubmit)="onSubmit()" [formGroup]="taskGroup">
+          <div class="mb-3">
+            <label for="title" class="form-label"
+              ><span style="color: red">*</span>כותרת</label
+            >
+            <input type="text" class="form-control" formControlName="title" />
+          </div>
+          <div class="mb-3">
+            <label for="desc" class="form-label">תאור</label>
+            <textarea
+              class="form-control"
+              formControlName="description"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="priority" class="form-label">עדיפות</label>
+            <select class="form-select" formControlName="priority">
+              @for (priority of priorityOptions; track priority) {
+                <option [ngValue]="priority.id">{{ priority.name }}</option>
+              }
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="deadLine" class="form-label"
+              ><span style="color: red">*</span>תאריך יעד</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              formControlName="deadLine"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">סטטוס</label>
+            <select formControlName="status" class="form-select">
+              @for (status of statusOptions; track status) {
+                <option [ngValue]="status.id">{{ status.name }}</option>
+              }
+            </select>
+          </div>
+          <div class="d-flex justify-content-between btns">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="taskGroup.invalid"
+            >
+              {{ taskToEdit ? "ערוך משימה" : "הוסף משימה" }}
+            </button>
+            <button
+              type="button"
+              class="btn btn-light cncl"
+              (click)="closePopup.emit()"
+            >
+              ביטול
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
